@@ -32,6 +32,8 @@ import org.webshop.search.model.ProductModel;
 import org.webshop.search.model.ProductName;
 import org.webshop.search.model.ScreenSize;
 import org.webshop.search.service.SearchService;
+import org.webshop.springmvcsecurity.authentication.facade.AuthenticationFacade;
+import org.webshop.springmvcsecurity.model.LoginUser;
 
 
 @RequestMapping(value = "/restmain")
@@ -50,6 +52,21 @@ public class SearchRestController extends BaseController{
 	
 	@Autowired
 	private CompanyImgDocService companyImgDocService;
+	
+	@Autowired
+	private AuthenticationFacade authenticationFacade;
+
+	
+	
+	@RequestMapping(value = "/authentication" , method = RequestMethod.GET)
+	public ResponseEntity <List<LoginUser>> getUser(){
+		
+		List<LoginUser> currentUser = authenticationFacade.getAuthenticationUser();
+		
+		System.out.println("currentUser " + currentUser.get(0).getUser());
+		
+		return new ResponseEntity<List<LoginUser>>(currentUser,HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/listAllCompanys" , method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<List<Company>> listAllCompanys() {

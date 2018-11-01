@@ -44,7 +44,25 @@ $(document).ready(function() {
 <body ng-app="myApp">
 <div class="generic-container">
 	<div class="panel panel-default">
-		<div class="panel-heading"><span class="lead">Search up form </span></div>
+		<div ng-controller="UserController" >	
+		<div class="panel-heading"><span class="lead">Maintenance customer products</span>
+		<table class = "table">
+		<thead>
+      <tr>
+         <th>User</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>{{currnetUser[0].user}}</td>
+      </tr>
+  </tbody>
+
+		</table>
+		 </div>
+		 
+		 </div>
+		 
 		<div class="formcontainer">	
 			<div ng-controller="SourcesFormController"  >	
 					<form name="frmsource" >
@@ -181,7 +199,9 @@ $(document).ready(function() {
 		 	</div>
 		</div>
 	</div>
-</div> 
+  </div> 
+ </div>
+
 			
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>

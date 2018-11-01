@@ -1,5 +1,23 @@
 'use strict';
 
+myApp.controller('UserController', ['$scope', 'Authentication', function($scope, Authentication) {
+	
+	function fetchCurrentUser(){
+		
+		Authentication.query(function(result, responseHeaders){
+			
+			$scope.currnetUser = result;
+			
+		},function(httpResponse){
+  		    //console.log('Error while fetching users list');
+  		    alert("Error while fetching currentUser") 
+   	 });	
+	}
+	
+	fetchCurrentUser();
+	
+}]);
+
 myApp.controller('CompanyController', ['$scope', 'Company', function($scope, Company) {
 	
     
