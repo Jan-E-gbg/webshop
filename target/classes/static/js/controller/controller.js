@@ -51,6 +51,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 	var isChoiceEmpty;
 	var screenSizes;
 	var product;
+	$scope.HideProduct = false;
 	
 	$scope.$on('company_id', function (event, data) {
 		    //console.log(data); // 'Some data'
@@ -61,6 +62,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 		    	
 		    		Models.query({company_id: company_id},function(result, responseHeaders){
   
+		    			$scope.HideProduct = false;
 		    			isChoiceEmpty = false;
 		    			$scope.models = result;	    		
 			 	 
@@ -106,6 +108,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			$scope.product = {};
 			$scope.product = product;
 			$scope.imgs = product.listOfImages;
+			$scope.HideProduct = true;
 			
 			
 				
@@ -162,6 +165,10 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
   		    alert("Error while fetching users list") 
    	 });
 		
+	$scope.ShowAndHideProduct = function(productStatus){
+		return productStatus;
+	}
+		
 		
 	
 	$scope.setFile = function(element){
@@ -184,7 +191,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
         });
     }
 	
-$scope.saveImage = function(){
+    $scope.saveImage = function(){
 		
 		alert(" imageName " + $scope.imageName)
 		var productId = $scope.product.productId;

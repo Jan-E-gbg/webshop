@@ -119,7 +119,7 @@ $(document).ready(function() {
               <div class="check-element animate-show-hide" ng-show="isChoiceEmpty(models)">
       		Ingen träff    
       	</div>
-      		<div>
+      	<div class="check-element animate-show-hide" ng-show="ShowAndHideProduct(HideProduct)">
       			<div class="panel panel-default">
                 <!-- Default panel contents -->
               	<div class="panel-heading"><span class="lead">Edit </span></div>
@@ -194,13 +194,12 @@ $(document).ready(function() {
 	 					<button type="button" ng-click="saveImage()" class="btn btn-success custom-width">Spara</button>
 	 				</div>
 	 				</div>
-      		
-      			</div>
-		 	</div>
+      				</div>
+		 		</div>
+			</div>
 		</div>
 	</div>
-  </div> 
- </div>
+</div> 
 
 			
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
