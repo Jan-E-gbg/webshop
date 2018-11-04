@@ -218,7 +218,7 @@ $scope.imgIndex = function(index){
 
                
 		
-}]);
+}]);// end SourcesFormController
 
 myApp.directive('fileModel', ['$parse', function ($parse) {
     return {
