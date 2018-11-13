@@ -52,6 +52,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 	var screenSizes;
 	var product;
 	$scope.HideProduct = false;
+	$scope.copyImage   = null;
 	
 	$scope.$on('company_id', function (event, data) {
 		    //console.log(data); // 'Some data'
@@ -62,6 +63,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 		    	
 		    		Models.query({company_id: company_id},function(result, responseHeaders){
   
+		    			$scope.copyImage   = null;
 		    			$scope.HideProduct = false;
 		    			isChoiceEmpty = false;
 		    			$scope.models = result;	    		
@@ -218,14 +220,33 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			});	
 	}
 
-$scope.imgIndex = function(index){
+    $scope.imgIndex = function(index){
 	
-	alert(" index " + index )
-}
+    	alert(" index " + index )
+    }
+    
+    $scope.getImgInfo = function(image){
+    	
+    	$scope.copyImage = image;
+    	alert(" id " + image.id )
+    }
+    
 
                
 		
 }]);// end SourcesFormController
+
+angular.module('myApp').controller("ImageCropperCtrl",[ '$scope', function($scope)
+    {
+        $scope.cropper = {};
+        $scope.cropper.sourceImage = null;
+        $scope.cropper.croppedImage   = null;
+        $scope.bounds = {};
+        $scope.bounds.left = 0;
+        $scope.bounds.right = 0;
+        $scope.bounds.top = 0;
+        $scope.bounds.bottom = 0;
+    }]);
 
 myApp.directive('fileModel', ['$parse', function ($parse) {
     return {
