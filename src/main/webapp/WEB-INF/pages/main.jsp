@@ -171,23 +171,41 @@ $(document).ready(function() {
                       			<button type="button" ng-click="saveProduct(product.productId)" class="btn btn-success custom-width">Spara endring</button>
                       		</td>
                       	</tr>
-                      	<tr> 
-                      		 <td colspan="6"> 
-                   	
-                      		 </td> 
-                      		 <td > <div id="ViewerContainer"> ViewerContainer</div> </td>
-                      	</tr>
                       </tbody>
                   </table>
-                  <table>
-                      			
-                      			<tbody> 
-                          			<tr ng-repeat="imge in imgs" ng-model="imgs" track by $index >
-                          				<td><img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/></td>
-                      		 		</tr>
-                      		 		
-                      		</tbody>
-                  		</table>
+                  		
+                  	<table>
+                  		<tr> 
+                  			<td>
+	                  			<table>	
+	                				<tbody> 
+	                    				<tr ng-repeat="imge in imgs" ng-model="imgs" track by $index >
+	                    					<td><img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/></td>
+	                		 			</tr>
+	               					</tbody>				
+	           					</table> 
+	           				</td>
+	           				<td>
+	           					<table>
+	           						<thead>
+                          				<tr>
+                          					<th>Imagename</th>
+                          				</tr>
+                          			</thead>
+                          			<tbody>
+                          				<tr>
+                          					<td>
+                          					</td>
+                          				</tr>
+                          				<tr>
+                          					<td> </td>
+                          				</tr>
+                          			</tboby>
+                          			
+	           					</table>
+	           				</td>
+           				</tr>
+           			</table>
                       		 	
               
       			</div>
