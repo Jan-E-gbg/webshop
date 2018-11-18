@@ -111,6 +111,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			$scope.product = product;
 			$scope.imgs = product.listOfImages;
 			$scope.HideProduct = true;
+			$scope.copyImage = null;
 			
 			
 				
@@ -121,26 +122,23 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 		});
 	}
 	
-		$scope.saveProduct = function(productId){
-		
+	$scope.saveProduct = function(productId){
 		
 		$scope.product.$update({productId: productId},function(){
 			
 		});
-		
 	}
 		
 		
-		$scope.RadioChangeVisible = function (s) {
+	$scope.RadioChangeVisible = function (s) {
 			
 			//alert(" visible " + s);
-			$scope.product.isVisible = s;
-			
-        };
+		$scope.product.isVisible = s;	
+     }
 		
-		ScreenSizes.query(function(result, responseHeaders){
-	   		$scope.screenSizes = result;	
-	   		screenSizes = result;
+	ScreenSizes.query(function(result, responseHeaders){
+	   	$scope.screenSizes = result;	
+	   	screenSizes = result;
 	   		
 	   		//for(var index = 0; index < screenSizes.length;index++ ){
 			//	
@@ -169,6 +167,16 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 		
 	$scope.ShowAndHideProduct = function(productStatus){
 		return productStatus;
+	}
+	
+	$scope.ShowAndHideImage = function(){
+		
+		if( $scope.copyImage != null){
+			
+			return true;
+		}
+		
+		return false;
 	}
 		
 		
@@ -228,7 +236,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
     $scope.getImgInfo = function(image){
     	
     	$scope.copyImage = image;
-    	alert(" id " + image.id )
+    	//alert(" id " + image.id )
     }
     
 

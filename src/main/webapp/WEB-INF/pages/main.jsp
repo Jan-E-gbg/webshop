@@ -40,6 +40,9 @@ $(document).ready(function() {
 	margin-left: auto;
 	margin-right: auto; 
 }
+table, th, td {
+border: 1px solid black;
+}
 </style>
 </head>
 <body ng-app="myApp">
@@ -130,12 +133,11 @@ $(document).ready(function() {
                           <tr>
                               <th>ProductId.</th>
                                <th>Name</th>
-                              <th>InfoO</th>
+                              <th>Info</th>
                               <th>Inches</th>
                               <th>Product names </th>
                               <th>Pris</th>
                               <th>Visible</th>
-                              <th width="20%"></th>
                           </tr>
                           <tr>
                           	<th colspan="7">Pictures </th>
@@ -167,7 +169,7 @@ $(document).ready(function() {
 					        </td>
                       	</tr>
                       	<tr>
-                      		<td colspan="6">
+                      		<td colspan="7">
                       			<button type="button" ng-click="saveProduct(product.productId)" class="btn btn-success custom-width">Spara endring</button>
                       		</td>
                       	</tr>
@@ -186,23 +188,28 @@ $(document).ready(function() {
 	           					</table> 
 	           				</td>
 	           				<td>
+	           				<div class="check-element animate-show-hide" ng-show="ShowAndHideImage()">
 	           					<table>
 	           						<thead>
-                          				<tr>
-                          					<th>Imagename</th>
-                          				</tr>
-                          			</thead>
-                          			<tbody>
-                          				<tr>
-                          					<td>
-                          					</td>
-                          				</tr>
-                          				<tr>
-                          					<td> </td>
-                          				</tr>
-                          			</tboby>
-                          			
+								         <tr>
+								            <th colspan="3">{{copyImage.name}}</th>
+								         </tr>
+								        </thead>
+								         <tr>
+								             <td rowspan="3"><img ng-src="{{copyImage.jspPath}}\img\{{copyImage.name}}"/></td>
+								            <td>Visible</td>
+								            <td></td>
+								         </tr>
+								         <tr>
+								            <td>Prio</td>
+								            <td></td>
+								         </tr>
+								         <tr>
+								            <td></td>
+								            <td></td>
+								         </tr>	
 	           					</table>
+	           			</div>
 	           				</td>
            				</tr>
            			</table>
