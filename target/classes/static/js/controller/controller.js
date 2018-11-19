@@ -112,13 +112,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			$scope.imgs = product.listOfImages;
 			$scope.HideProduct = true;
 			$scope.copyImage = null;
-			
-			
-				
-				$scope.visibleSelected = $scope.product.isVisible;
-			
-			//alert(" size of img " + $scope.imgs[0].jspPath)
-				
+			$scope.visibleSelected = $scope.product.isVisible;	
 		});
 	}
 	
@@ -135,7 +129,12 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			//alert(" visible " + s);
 		$scope.product.isVisible = s;	
      }
+	
+	$scope.RadioChangeImage = function (s) {
 		
+		$scope.copyImage.isVisible = s;
+	}		
+	
 	ScreenSizes.query(function(result, responseHeaders){
 	   	$scope.screenSizes = result;	
 	   	screenSizes = result;
@@ -199,6 +198,11 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
         $scope.$apply(function () {
             $scope.img = e.target.result;            
         });
+    }
+    
+    $scope.UpdateCompanyImgAndDoc = function () {
+        
+    	var data = $.param({companyImgAndDoc: $scope.copyImage });
     }
 	
     $scope.saveImage = function(){

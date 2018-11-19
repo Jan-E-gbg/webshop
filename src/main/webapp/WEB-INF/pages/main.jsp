@@ -158,14 +158,12 @@ border: 1px solid black;
 					        <td> 
 					        <label>
     						<input type="radio"  name="visible" ng-change="RadioChangeVisible(visibleSelected)" ng-model="visibleSelected" ng-value="1">
-    							Product is visibele 	  						
+    							Show product on search	  						
     						</label><br/>
     						<label>
     						<input type="radio" name="visible" ng-change="RadioChangeVisible(visibleSelected)" ng-model="visibleSelected" ng-value="0">
-   								Product is not visibele
+   								Show not 
   							</label><br/>
-					        {{product.isVisible}}
-					      
 					        </td>
                       	</tr>
                       	<tr>
@@ -197,12 +195,22 @@ border: 1px solid black;
 								        </thead>
 								         <tr>
 								             <td rowspan="3"><img ng-src="{{copyImage.jspPath}}\img\{{copyImage.name}}"/></td>
-								            <td>Visible</td>
-								            <td></td>
+								            <td colspan="2">
+												<label>
+    						<input type="radio"  name="visibleimg" ng-change="RadioChangeImage()"  ng-model="copyImage.isVisible" ng-value="1">
+    							Show picture on search 	  						
+    						</label><br/>
+    						<label>
+    						<input type="radio" name="visibleimg" ng-change="RadioChangeImage()" ng-model="copyImage.isVisible" ng-value="0">
+   								Show not picture
+  							</label><br/>
+					        {{copyImage.isVisible}}
+											
+											
+											</td>
 								         </tr>
 								         <tr>
-								            <td>Prio</td>
-								            <td></td>
+								            <td colspan="2">Prio</td>
 								         </tr>
 								         <tr>
 								            <td></td>
