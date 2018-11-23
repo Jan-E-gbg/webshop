@@ -84,9 +84,9 @@ myApp.factory('TokenHandler', function() {
 	  return tokenHandler;
 	});
 
-myApp.factory('Model', ['$resource','TokenHandler', function ($resource, tokenHandler) {
+myApp.factory('Model', ['$resource','TokenHandler', function ($resource) {
 	//$resource() function returns an object of resource class
-var resource = $resource(
+	return  $resource(
 		'http://localhost:8080/WebShop/restmain/modelItem/:productId',{productId: '@_productId'},
 		//Handy for update & delete. id will be set with id of instance
 		{
@@ -100,13 +100,32 @@ var resource = $resource(
       {
           stripTrailingSlashes: false
       }					
-);
-	
-resource = tokenHandler.wrapActions( resource,
-	    ["query", "update", "save"] );
-
-	  return resource;
+	);
 }]);
+myApp.factory('ImgAndDoc', ['$resource','TokenHandler', function ($resource) {
+	//$resource() function returns an object of resource class
+	return $resource(
+		'http://localhost:8080/WebShop/restmain/imgAndDoc/:id',{id: '@_id'},
+		//Handy for update & delete. id will be set with id of instance
+		{
+			update: { 
+			      method: 'PUT'// To send the HTTP Put request when calling this custom update method.
+			},
+            get: {
+                method: 'GET'
+          }
+      }, 
+      {
+          stripTrailingSlashes: false
+      }					
+	);
+}]);
+	
+//resource = tokenHandler.wrapActions( resource,
+//	    ["query", "update", "save"] );
+
+	//  return resource;
+//}]);
 
 myApp.factory('ScreenSizes', ['$resource', function ($resource) {
 	//$resource() function returns an object of resource class

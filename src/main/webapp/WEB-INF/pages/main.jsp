@@ -197,14 +197,15 @@ border: 1px solid black;
 								             <td rowspan="3"><img ng-src="{{copyImage.jspPath}}\img\{{copyImage.name}}"/></td>
 								            <td colspan="2">
 												<label>
-    						<input type="radio"  name="visibleimg" ng-change="RadioChangeImage()"  ng-model="copyImage.isVisible" ng-value="1">
+    						<input type="radio"  name="visibleimg" ng-change="RadioChangeImage(copyImage.isVisible)"  ng-model="copyImage.isVisible" ng-value="1">
     							Show picture on search 	  						
     						</label><br/>
     						<label>
-    						<input type="radio" name="visibleimg" ng-change="RadioChangeImage()" ng-model="copyImage.isVisible" ng-value="0">
+    						<input type="radio" name="visibleimg" ng-change="RadioChangeImage(copyImage.isVisible)" ng-model="copyImage.isVisible" ng-value="0">
    								Show not picture
   							</label><br/>
 					        {{copyImage.isVisible}}
+					        {{ServerResponse}}
 											
 											
 											</td>
@@ -221,8 +222,6 @@ border: 1px solid black;
 	           				</td>
            				</tr>
            			</table>
-                      		 	
-              
       			</div>
 	      			<div class="row">
 	 					<div class="col-lg-12">

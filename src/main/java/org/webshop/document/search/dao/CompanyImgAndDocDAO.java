@@ -9,5 +9,7 @@ public interface CompanyImgAndDocDAO {
 	void save(CompanyImgAndDoc companyImgAndDoc);
 	
 	List <CompanyImgAndDoc>findAllByProductId(int productId );
+	
+	CompanyImgAndDoc findById(int id);
 
 }

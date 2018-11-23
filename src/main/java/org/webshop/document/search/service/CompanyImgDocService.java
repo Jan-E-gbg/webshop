@@ -18,5 +18,7 @@ public interface CompanyImgDocService {
 	void updateProcuctModel(CollectionOfModel collectionOfModel);
 	
 	void save(Company company);
+	
+	CompanyImgAndDoc findById(int id);
 
 }

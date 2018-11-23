@@ -28,4 +28,14 @@ public class CompanyImgAndDocDAOImpl extends AbstractDAO<Integer, CompanyImgAndD
 		return(List<CompanyImgAndDoc>)crit.list();
 	}
 
+	@Override
+	public CompanyImgAndDoc findById(int id) {
+		// TODO Auto-generated method stub
+		CompanyImgAndDoc companyImgAndDoc = getByKey(id);
+		
+		return companyImgAndDoc;
+	}
+	
+	
+
 }

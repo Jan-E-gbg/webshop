@@ -45,7 +45,7 @@ myApp.controller('CompanyController', ['$scope', 'Company', function($scope, Com
    	   
  }]);
 
-myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','ScreenSizes','ProductNames', function($http, $scope, Models, Model, ScreenSizes, ProductNames) {
+myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','ScreenSizes','ProductNames','ImgAndDoc',function($http, $scope, Models, Model, ScreenSizes, ProductNames, ImgAndDoc) {
 	
 	var company_id;
 	var isChoiceEmpty;
@@ -133,6 +133,8 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 	$scope.RadioChangeImage = function (s) {
 		
 		$scope.copyImage.isVisible = s;
+		UpdateCompanyImgAndDoc();
+		
 	}		
 	
 	ScreenSizes.query(function(result, responseHeaders){
@@ -200,9 +202,10 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
         });
     }
     
-    $scope.UpdateCompanyImgAndDoc = function () {
+    function getCompanyImgAndDoc() {
         
-    	var data = $.param({companyImgAndDoc: $scope.copyImage });
+    	
+    	
     }
 	
     $scope.saveImage = function(){
@@ -239,8 +242,10 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
     
     $scope.getImgInfo = function(image){
     	
-    	$scope.copyImage = image;
+    	ImgAndDoc.get({id: image.id}).$promise.then(function(imgaeAndDoc) {
+    	$scope.copyImage = imageAndDoc;
     	//alert(" id " + image.id )
+    	});
     }
     
 

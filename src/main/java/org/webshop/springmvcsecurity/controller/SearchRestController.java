@@ -183,6 +183,13 @@ public class SearchRestController extends BaseController{
 		
 	}
 	
+	@RequestMapping(value = "/imgAndDoc/{id}" , method = RequestMethod.GET)
+	public  ResponseEntity<CompanyImgAndDoc> getImageAndDoc (@PathVariable("id") long id,HttpServletRequest request) throws IOException{
+		CompanyImgAndDoc companyImgAndDoc = companyImgDocService.findById((int) id);
+		//System.out.println("PUT " + companyImgAndDoc.getIsVisible());
+		return new ResponseEntity<CompanyImgAndDoc>(companyImgAndDoc,HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/previewImage" , method = RequestMethod.POST)
 	public  ResponseEntity<String> showImage (@RequestParam(value = "file") MultipartFile file , @RequestParam(value = "imgName") String  imgName ,  @RequestParam(value = "productId") int productId , HttpServletRequest request)throws IOException{			
 		

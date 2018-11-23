@@ -71,5 +71,10 @@ public class CompanyImgDocServiceImpl implements CompanyImgDocService  {
 		
 	}
 
+	public CompanyImgAndDoc findById(int id) {
+		// TODO Auto-generated method stub
+		return companyImgAndDocDAO.findById(id);
+	}
+
 
 }
