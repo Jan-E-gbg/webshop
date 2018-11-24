@@ -63,7 +63,7 @@ public class SearchRestController extends BaseController{
 		
 		List<LoginUser> currentUser = authenticationFacade.getAuthenticationUser();
 		
-		System.out.println("currentUser " + currentUser.get(0).getUser());
+		//System.out.println("currentUser " + currentUser.get(0).getUser());
 		
 		return new ResponseEntity<List<LoginUser>>(currentUser,HttpStatus.OK);
 	}
@@ -74,16 +74,12 @@ public class SearchRestController extends BaseController{
         
         companys.add(0,new Company(" ", "Choice"));
         
-        System.out.println("all companys");
-        
         return new ResponseEntity<List<Company>>(companys , HttpStatus.OK);
     }
 	
 	@RequestMapping(value = "/listAllScreenSizes" , method = RequestMethod.GET)
 	public ResponseEntity<List<ScreenSize>> listAllScreenSizes(){
 		List<ScreenSize> screenSizes = sourceService.getListOfSizes();
-		
-		System.out.println("screenSizes " +  screenSizes.size());
 		
 		return new ResponseEntity<List<ScreenSize>>(screenSizes , HttpStatus.OK);
 	}
@@ -99,20 +95,18 @@ public class SearchRestController extends BaseController{
 	@RequestMapping(value = "/listCompanyModels/{company_id}" , method = RequestMethod.GET)
 	public ResponseEntity<List<CollectionOfModel>> getCompanyModels(@PathVariable("company_id") long company_id){
 		
-		System.out.println("ld " + company_id );
+		//System.out.println("ld " + company_id );
 		
 		int size =	productModelService.findAllByCompanyId((int) company_id).size();
 		
 		List<ProductModel> productModel = productModelService.findAllByCompanyId((int) company_id);
 		ProductModel model = productModel.get(0);
-		System.out.println(" CompanyName " + model.getCompanyModel().getCompanyName());
+		//System.out.println(" CompanyName " + model.getCompanyModel().getCompanyName());
 		
-		//productModel
-		
-		System.out.println("size of companys " + size);
+		//System.out.println("size of companys " + size);
 		List<CollectionOfModel> collectionOfModel = sourceService.getAllModels(company_id);
 		
-		System.out.println("ld " + company_id + " size " + collectionOfModel.size());
+		//System.out.println("ld " + company_id + " size " + collectionOfModel.size());
 		
 		return new ResponseEntity<List<CollectionOfModel>>(collectionOfModel,HttpStatus.OK);
 	}
@@ -121,14 +115,14 @@ public class SearchRestController extends BaseController{
 	public ResponseEntity <CollectionOfModel> updateProductModel(@PathVariable("productId") long productId ,@RequestBody @Validated CollectionOfModel collectionOfModel , BindingResult result){
 		
 		companyImgDocService.updateProcuctModel(collectionOfModel);		
-		System.out.println(" Id " + collectionOfModel.getProductId());
+		/*System.out.println(" Id " + collectionOfModel.getProductId());
 		System.out.println("size_id " + collectionOfModel.getModell_size_id());
 		System.out.println("pris  " + collectionOfModel.getModellPris());
 		System.out.println("companyId   " + collectionOfModel.getCompany_id());
 		System.out.println("info   " + collectionOfModel.getModell_info());
 		System.out.println("visible " + collectionOfModel.getIsVisible());
 		
-		System.out.println(" PUT ");
+		System.out.println(" PUT ");*/
 		
 		return new ResponseEntity<CollectionOfModel>(collectionOfModel,HttpStatus.OK);	
 		
@@ -139,9 +133,6 @@ public class SearchRestController extends BaseController{
 	public ResponseEntity<CollectionOfModel> getProductModel(@PathVariable("productId") long productId,HttpServletRequest request){
 		
 		CollectionOfModel collectionModel = sourceService.getProductModel(productId);
-		System.out.println("visible get product " + collectionModel.getIsVisible());
-		
-		
 		
 		String rootPath = request.getSession().getServletContext().getRealPath("/");
 	       File dir = new File(rootPath + File.separator + "img");
@@ -186,7 +177,6 @@ public class SearchRestController extends BaseController{
 	@RequestMapping(value = "/imgAndDoc/{id}" , method = RequestMethod.GET)
 	public  ResponseEntity<CompanyImgAndDoc> getImageAndDoc (@PathVariable("id") long id,HttpServletRequest request) throws IOException{
 		CompanyImgAndDoc companyImgAndDoc = companyImgDocService.findById((int) id);
-		//System.out.println("PUT " + companyImgAndDoc.getIsVisible());
 		return new ResponseEntity<CompanyImgAndDoc>(companyImgAndDoc,HttpStatus.OK);
 	}
 	
@@ -225,9 +215,6 @@ public class SearchRestController extends BaseController{
 		
 	   }
 			  
-	   System.out.println("Name " + name);
-	   
-	   
 	   String rootPath = request.getSession().getServletContext().getRealPath("/");
        File dir = new File(rootPath + File.separator + "img");
        if (!dir.exists()) {

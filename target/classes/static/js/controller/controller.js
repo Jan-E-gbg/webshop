@@ -242,7 +242,7 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
     
     $scope.getImgInfo = function(image){
     	
-    	ImgAndDoc.get({id: image.id}).$promise.then(function(imgaeAndDoc) {
+    	ImgAndDoc.get({id: image.id}).$promise.then(function(imageAndDoc) {
     	$scope.copyImage = imageAndDoc;
     	//alert(" id " + image.id )
     	});
