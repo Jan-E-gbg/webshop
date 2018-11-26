@@ -114,6 +114,7 @@ public class SearchRestController extends BaseController{
 	@RequestMapping(value = "/modelItem/{productId}", method = RequestMethod.PUT)
 	public ResponseEntity <CollectionOfModel> updateProductModel(@PathVariable("productId") long productId ,@RequestBody @Validated CollectionOfModel collectionOfModel , BindingResult result){
 		
+		//result.
 		companyImgDocService.updateProcuctModel(collectionOfModel);		
 		/*System.out.println(" Id " + collectionOfModel.getProductId());
 		System.out.println("size_id " + collectionOfModel.getModell_size_id());
@@ -178,6 +179,14 @@ public class SearchRestController extends BaseController{
 	public  ResponseEntity<CompanyImgAndDoc> getImageAndDoc (@PathVariable("id") long id,HttpServletRequest request) throws IOException{
 		CompanyImgAndDoc companyImgAndDoc = companyImgDocService.findById((int) id);
 		return new ResponseEntity<CompanyImgAndDoc>(companyImgAndDoc,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/imgAndDoc/{id}" , method = RequestMethod.PUT)
+	public  ResponseEntity<CompanyImgAndDoc> updateImageAndDoc (@PathVariable("id") long id, @RequestBody @Validated CompanyImgAndDoc companyImgAndDoc , BindingResult result, HttpServletRequest request) throws IOException{
+		
+		companyImgDocService.updateCompanyImgAndDocModel(companyImgAndDoc);
+		
+		return new ResponseEntity<CompanyImgAndDoc>(HttpStatus.NO_CONTENT);
 	}
 	
 	@RequestMapping(value = "/previewImage" , method = RequestMethod.POST)

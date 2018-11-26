@@ -76,5 +76,22 @@ public class CompanyImgDocServiceImpl implements CompanyImgDocService  {
 		return companyImgAndDocDAO.findById(id);
 	}
 
+	@Override
+	public void updateCompanyImgAndDocModel(CompanyImgAndDoc companyImgAndDoc) {
+		// TODO Auto-generated method stub
+		
+		CompanyImgAndDoc entity = companyImgAndDocDAO.findById(companyImgAndDoc.getId());
+		entity.setId(companyImgAndDoc.getId());
+		entity.setDescription(companyImgAndDoc.getDescription());
+		entity.setContent(companyImgAndDoc.getContent());
+		entity.setIsVisible(companyImgAndDoc.getIsVisible());
+		entity.setPriority(companyImgAndDoc.getProductId());
+		entity.setJspPath(companyImgAndDoc.getJspPath());
+		entity.setProductId(companyImgAndDoc.getProductId());
+		entity.setName(companyImgAndDoc.getName());
+		entity.setType(companyImgAndDoc.getType());
+		entity.setText(companyImgAndDoc.getText());
+	}
+
 
 }

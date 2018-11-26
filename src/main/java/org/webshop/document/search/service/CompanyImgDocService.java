@@ -20,5 +20,7 @@ public interface CompanyImgDocService {
 	void save(Company company);
 	
 	CompanyImgAndDoc findById(int id);
+	
+	void updateCompanyImgAndDocModel(CompanyImgAndDoc companyImgAndDoc);
 
 }

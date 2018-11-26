@@ -202,9 +202,11 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
         });
     }
     
-    function getCompanyImgAndDoc() {
+    function UpdateCompanyImgAndDoc() {
         
-    	
+    	$scope.copyImage.$update({id: $scope.copyImage.id},function(){
+			
+		});
     	
     }
 	
