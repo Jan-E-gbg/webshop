@@ -70,23 +70,28 @@ border: 1px solid black;
 		<div class="formcontainer">	
 			<div ng-controller="SourcesFormController"  >	
 					<form name="frmsource" >
-					<table border=0 class="table table-hover">
-			        	<thead>
-			           		<tr>
-			                 <th>Manufactures</th></tr>
-			         	</thead>
-			         	<tbody>
-			         		<tr>
-			         			<td>
-								<div ng-controller="CompanyController">
-								<select ng-model="selectedCompany" ng-change="changedValue(selectedCompany)">
+			<div ng-controller="CompanyController">
+				<table border=0 class="table table-hover">
+			        <thead>
+			           	<tr>
+			                 <th>Manufactures</th>
+			             </tr>
+			         </thead>
+			         <tbody>
+			         	<tr>
+			         		<td>
+								<select size="5" ng-model="selectedCompany" ng-change="changedValue(selectedCompany)">
 						       		<option ng-selected= "{{companylist.companyId == selectedCompany}}" data-ng-repeat="companylist in companys" value="{{companylist.companyId}}">{{companylist.companyName}}</option>
-						        </select>
-						 	     </div>
-								</td>
+						        </select>  
+							</td>
+							<td>
+							
+								
+							</td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
 			</form>
 			<div class="check-element animate-show-hide" ng-show="showAndHideList(models)">
 			  <div class="panel panel-default">
