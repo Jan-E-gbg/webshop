@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.webshop.document.search.service.CompanyImgDocService;
 import org.webshop.hibernate.service.ProductModelService;
+import org.webshop.search.model.CategoriesModel;
 import org.webshop.search.model.CollectionOfModel;
 import org.webshop.search.model.Company;
 import org.webshop.search.model.CompanyImgAndDoc;
@@ -91,13 +92,23 @@ public class SearchRestController extends BaseController{
 		return new ResponseEntity<List<ProductName>>(productNames,HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/listOfCompanyCategoreis/{company_id}" , method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriesModel>> listOfCompanyCategoreis(@PathVariable("company_id") long company_id){
+		
+		List<CategoriesModel> categories = sourceService.getAllCategoriesByCompanyId(company_id);
+		
+		System.out.println("Gategoris " + categories.size());
+		
+		return new ResponseEntity<List<CategoriesModel>>(categories,HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/listCompanyModels/{company_id}" , method = RequestMethod.GET)
 	public ResponseEntity<List<CollectionOfModel>> getCompanyModels(@PathVariable("company_id") long company_id){
 		
-		//System.out.println("ld " + company_id );
+		System.out.println("ld " + company_id );
+		int size =	sourceService.getAllCategoriesByCompanyId(company_id).size();
 		
-		int size =	productModelService.findAllByCompanyId((int) company_id).size();
+		System.out.println(" size " + size);
 		
 		List<ProductModel> productModel = productModelService.findAllByCompanyId((int) company_id);
 		ProductModel model = productModel.get(0);

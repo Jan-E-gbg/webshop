@@ -2,6 +2,7 @@ package org.webshop.search.service;
 
 import java.util.List;
 
+import org.webshop.search.model.CategoriesModel;
 import org.webshop.search.model.CollectionOfModel;
 import org.webshop.search.model.Company;
 import org.webshop.search.model.ProductName;
@@ -19,5 +20,7 @@ public interface SearchService {
 	List <ScreenSize> getListOfSizes();
 	
 	List<ProductName> getListOfProductNames();
+	
+	List<CategoriesModel> getAllCategoriesByCompanyId(long companyId);
 	
 }

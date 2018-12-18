@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.webshop.search.dao.EquipmentTypeDAO;
+import org.webshop.search.model.CategoriesModel;
 import org.webshop.search.model.ProductName;
 import org.webshop.search.model.ScreenSize;
+import org.webshop.search.util.CategoriesMapper;
 
 public class EquipmentTypeDAOImpl extends JdbcDaoSupport implements EquipmentTypeDAO{
 
@@ -36,5 +38,21 @@ public class EquipmentTypeDAOImpl extends JdbcDaoSupport implements EquipmentTyp
 			});
 			return equipmentType;
 	
+	}
+
+
+	@Override
+	public List<CategoriesModel> getCategoriesByCompanyId(long companyId) {
+		// TODO Auto-generated method stub
+		String sql = "select DISTINCT \r\n" + 
+				" modell_types.modell_type_id,modell_type_name\r\n" + 
+				" from modell_types\r\n" + 
+				" inner join modells \r\n" + 
+				" on modells.MODELL_TYPE_ID = modell_types.modell_type_id and modells.COMPANY_ID = ";
+		sql += String.valueOf(companyId);
+		
+	List <CategoriesModel> categories = this.getJdbcTemplate().query(sql, new CategoriesMapper()); 
+		
+	return categories;
 	}
 }

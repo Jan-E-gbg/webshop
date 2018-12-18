@@ -18,7 +18,7 @@ myApp.controller('UserController', ['$scope', 'Authentication', function($scope,
 	
 }]);
 
-myApp.controller('CompanyController', ['$scope', 'Company', function($scope, Company) {
+myApp.controller('CompanyController', ['$scope', 'Company','Categories', function($scope, Company, Categories) {
 	
     
     function fetchAllCompanys(){
@@ -39,7 +39,15 @@ myApp.controller('CompanyController', ['$scope', 'Company', function($scope, Com
 	 		    
 	    $scope.changedValue = function(item){       
 	       // alert(item);
-	    	$scope.$emit('company_id', item);
+	    	
+	    	Categories.query({company_id: item},function(result, responseHeaders){
+	    		
+	    	},function(httpResponse){
+	    		//console.log('Error while fetching users list');
+	    		alert("Error while fetching Categories list") 
+	    	});
+	    	
+	    	$scope.$emit('company_id',{'companyId': item,'categoriesId': 'topp'});
 	       
 	    } 
    	   
@@ -54,9 +62,10 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 	$scope.HideProduct = false;
 	$scope.copyImage   = null;
 	
-	$scope.$on('company_id', function (event, data) {
+	$scope.$on('company_id', function (event,data) {
 		    //console.log(data); // 'Some data'
-		company_id = data;
+		alert(data.categoriesId);
+		company_id = data.companyId;
 		isChoiceEmpty = false;
 		    
 			if( company_id != " " ){

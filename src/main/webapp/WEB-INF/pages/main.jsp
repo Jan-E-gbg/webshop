@@ -117,7 +117,7 @@ border: 1px solid black;
                               <td><span ng-bind="u.modellPris"></span></td>
                               <td><span ng-bind="u.modell_size_name"></span></td>
                               <td>
-                              <button type="button" ng-click="edit(u.productId)" class="btn btn-success custom-width">Edit</button>
+                              <button type="button" ng-click="edit(u.productId)" class="btn btn-xs custom-width">Edit</button>
                               </td>
                           </tr>
                       </tbody>
@@ -144,9 +144,6 @@ border: 1px solid black;
                               <th>Pris</th>
                               <th>Visible</th>
                           </tr>
-                          <tr>
-                          	<th colspan="7">Pictures </th>
-                          </tr>
                       </thead>
                       <tbody>
                       	<tr>
@@ -154,9 +151,9 @@ border: 1px solid black;
                       		<td><span> <input  ng-model="product.modellName"></span></td>
                       		<td><span> <textarea ng-model="product.modell_info" ></textarea> </span></td>
                       		<td><span> <select ng-model="product.modell_size_id" >
-					        		<option ng-selected= "{{sizeslist.screenSizeId == product.modell_size_id}}"data-ng-repeat="sizeslist in screenSizes" value="{{sizeslist.screenSizeId}}">{{sizeslist.screenSizeName}}</option>
+					        		<option ng-selected="{{sizeslist.screenSizeId == product.modell_size_id}}"data-ng-repeat="sizeslist in screenSizes" value="{{sizeslist.screenSizeId}}">{{sizeslist.screenSizeName}}</option>
 					        </select></span> </td>
-					        <td><span><select ng-model"product.modell_type_id" >
+					        <td><span><select ng-model="product.modell_type_id" >
 					        		<option ng-selected= "{{equipmentslist.typeId == product.modell_type_id}}"data-ng-repeat="equipmentslist in equipmentsTypes" value="{{equipmentslist.typeId}}">{{equipmentslist.typeName}}</option>
 					        	</select></span> </td>
 					        <td><span> <input ng-model="product.modellPris"></span></td>
@@ -173,7 +170,7 @@ border: 1px solid black;
                       	</tr>
                       	<tr>
                       		<td colspan="7">
-                      			<button type="button" ng-click="saveProduct(product.productId)" class="btn btn-success custom-width">Spara endring</button>
+                      			<button type="button" ng-click="saveProduct(product.productId)" class="btn btn-xs custom-width">Save</button>
                       		</td>
                       	</tr>
                       </tbody>
@@ -234,7 +231,7 @@ border: 1px solid black;
 	 					<img ng-src="{{img}}" style="width:200px;">
 	 					<label class="col-md-3 control-lable" for="imageName">Name on image</label>
 	 					<input type="text" ng-model="imageName"/>
-	 					<button type="button" ng-click="saveImage()" class="btn btn-success custom-width">Spara</button>
+	 					<button type="button" ng-click="saveImage()" class="btn btn-xs custom-width">Spara</button>
 	 				</div>
 	 				</div>
       				</div>

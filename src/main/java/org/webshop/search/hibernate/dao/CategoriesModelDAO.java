@@ -10,5 +10,7 @@ public interface CategoriesModelDAO {
 	void save(CategoriesModel categoriesModel);
 	
 	List <CategoriesModel> list();
+	
+	List <CategoriesModel>findAllByCompanyId(int companyId);
 
 }

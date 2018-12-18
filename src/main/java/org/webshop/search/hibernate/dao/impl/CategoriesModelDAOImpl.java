@@ -3,6 +3,7 @@ package org.webshop.search.hibernate.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.webshop.document.dao.AbstractDAO;
 import org.webshop.search.hibernate.dao.CategoriesModelDAO;
@@ -25,6 +26,16 @@ public class CategoriesModelDAOImpl extends AbstractDAO<Integer, CategoriesModel
 		Criteria crit = createEntityCriteria();
 		return (List<CategoriesModel>)crit.list();
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CategoriesModel> findAllByCompanyId(int companyId) {
+		// TODO Auto-generated method stub
+		Criteria crit = createEntityCriteria();
+        
+		return(List<CategoriesModel>)crit.list();
+	
 	}
 
 }

@@ -58,16 +58,24 @@ public class ProductModel {
 		this.companyName = companyName;
 	}
 
-	@OneToMany(mappedBy = "model", cascade = CascadeType.MERGE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "model", cascade = CascadeType.ALL, orphanRemoval = true)
 
 	private Set<CompanyImgAndDoc> companyImgAndDoc = new HashSet<CompanyImgAndDoc>();
+	
+	
+	
+	
 	
 	@ManyToOne()
 	@JoinColumn(name="COMPANY_ID", 
 	insertable=false, updatable=false, 
 	nullable=false)
 	public CompanyModel companyModel;
-
+	
+	
+	
+	
+	
 	public CompanyModel getCompanyModel() {
 		return companyModel;
 	}
