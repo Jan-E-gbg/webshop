@@ -33,7 +33,7 @@ myApp.controller('CompanyController', ['$scope', 'Company','Categories', functio
    	 });
     }
   	  
-
+    $scope.selectedCategories = null;
     
     fetchAllCompanys();
 	 		    
@@ -42,14 +42,24 @@ myApp.controller('CompanyController', ['$scope', 'Company','Categories', functio
 	    	
 	    	Categories.query({company_id: item},function(result, responseHeaders){
 	    		
+	    		$scope.categories = result;
+	    		
 	    	},function(httpResponse){
 	    		//console.log('Error while fetching users list');
 	    		alert("Error while fetching Categories list") 
 	    	});
 	    	
-	    	$scope.$emit('company_id',{'companyId': item,'categoriesId': 'topp'});
+	    	
+	    	$scope.companyId = item;
+	    	//$scope.$emit('company_id',{'companyId': item,'categoriesId': 'topp'});
 	       
 	    } 
+	    
+	    $scope.changeValueCategories = function(item){
+	    	
+	    	$scope.$emit('company_id',{'companyId': $scope.companyId,'categoriesId': item});
+	    }
+	    
    	   
  }]);
 
@@ -64,13 +74,13 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 	
 	$scope.$on('company_id', function (event,data) {
 		    //console.log(data); // 'Some data'
-		alert(data.categoriesId);
+		//alert(data.categoriesId);
 		company_id = data.companyId;
 		isChoiceEmpty = false;
 		    
 			if( company_id != " " ){
 		    	
-		    		Models.query({company_id: company_id},function(result, responseHeaders){
+		    		Models.query({company_id: company_id, categories_id: data.categoriesId },function(result, responseHeaders){
   
 		    			$scope.copyImage   = null;
 		    			$scope.HideProduct = false;

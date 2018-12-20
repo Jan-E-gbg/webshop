@@ -102,13 +102,13 @@ public class SearchRestController extends BaseController{
 		return new ResponseEntity<List<CategoriesModel>>(categories,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/listCompanyModels/{company_id}" , method = RequestMethod.GET)
-	public ResponseEntity<List<CollectionOfModel>> getCompanyModels(@PathVariable("company_id") long company_id){
+	@RequestMapping(value = "/listCompanyModels/{company_id}/{categories_id}" , method = RequestMethod.GET)
+	public ResponseEntity<List<CollectionOfModel>> getCompanyModels(@PathVariable("company_id") long company_id,@PathVariable("categories_id") long categories_id){
 		
-		System.out.println("ld " + company_id );
-		int size =	sourceService.getAllCategoriesByCompanyId(company_id).size();
+		System.out.println("ld " + categories_id );
+		//int size =	sourceService.getAllCategoriesByCompanyId(company_id).size();
 		
-		System.out.println(" size " + size);
+		//System.out.println(" size " + size);
 		
 		List<ProductModel> productModel = productModelService.findAllByCompanyId((int) company_id);
 		ProductModel model = productModel.get(0);

@@ -43,6 +43,9 @@ $(document).ready(function() {
 table, th, td {
 border: 1px solid black;
 }
+.right{
+ text-align:right; 
+}
 </style>
 </head>
 <body ng-app="myApp">
@@ -74,19 +77,22 @@ border: 1px solid black;
 				<table border=0 class="table table-hover">
 			        <thead>
 			           	<tr>
-			                 <th>Manufactures</th>
+			                 <th class="right">Manufactures</th>
+			                 <th>Categories</th>
 			             </tr>
 			         </thead>
 			         <tbody>
 			         	<tr>
-			         		<td>
+			         		<td class="right">
 								<select size="5" ng-model="selectedCompany" ng-change="changedValue(selectedCompany)">
 						       		<option ng-selected= "{{companylist.companyId == selectedCompany}}" data-ng-repeat="companylist in companys" value="{{companylist.companyId}}">{{companylist.companyName}}</option>
 						        </select>  
 							</td>
 							<td>
-							
-								
+								<select ng-model="selectedCategories" ng-change="changeValueCategories(selectedCategories)" size="5">
+						       		<option data-ng-repeat="categoriesList in categories" value="{{categoriesList.categoriesId}}">{{categoriesList.categoriesName}}</option>
+						        </select>
+								{{selectedCategories}}
 							</td>
 						</tr>
 					</tbody>
@@ -103,7 +109,7 @@ border: 1px solid black;
                           <tr>
                               <th>ProductId.</th>
                                <th>Name</th>
-                              <th>InfoO</th>
+                              <th>Info</th>
                               <th>Pris</th>
                               <th>Inch</th>
                               <th width="20%"></th>

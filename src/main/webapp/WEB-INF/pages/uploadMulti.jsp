@@ -22,7 +22,7 @@
 <form:form method="POST" action="${pageContext.request.contextPath}/multifilesave" enctype="multipart/form-data">
     <table>
         <tr>
-            <td>Select a file to upload</td>
+            <td>Select a fie to upload</td>
             <td><input type="file" name="file" class="form-control input-sm"></td>
         </tr>
         <tr>

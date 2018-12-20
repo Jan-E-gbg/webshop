@@ -31,7 +31,7 @@ myApp.factory('Company', ['$resource', function ($resource) {
 myApp.factory('Models', ['$resource', function ($resource) {
 	//$resource() function returns an object of resource class
     return $resource(
-    		'http://localhost:8080/WebShop/restmain/listCompanyModels/:company_id',
+    		'http://localhost:8080/WebShop/restmain/listCompanyModels/:company_id/:categories_id',
     		//Handy for update & delete. id will be set with id of instance
     		{
     			update: { 
