@@ -110,12 +110,9 @@ public class SearchRestController extends BaseController{
 		
 		//System.out.println(" size " + size);
 		
-		List<ProductModel> productModel = productModelService.findAllByCompanyId((int) company_id);
-		ProductModel model = productModel.get(0);
-		//System.out.println(" CompanyName " + model.getCompanyModel().getCompanyName());
 		
 		//System.out.println("size of companys " + size);
-		List<CollectionOfModel> collectionOfModel = sourceService.getAllModels(company_id);
+		List<CollectionOfModel> collectionOfModel = sourceService.getAllPruductByCompanyAndCategories(company_id, categories_id);
 		
 		//System.out.println("ld " + company_id + " size " + collectionOfModel.size());
 		

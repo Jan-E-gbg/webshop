@@ -85,4 +85,12 @@ public class SearchServiceImpl implements SearchService {
 		return equipmentTypeDAO.getCategoriesByCompanyId(companyId);
 	}
 
+
+	@Override
+	public List<CollectionOfModel> getAllPruductByCompanyAndCategories(long companyId, long categoriesId) {
+		// TODO Auto-generated method stub
+		return collectionOfModelDAO.getAllPruductByCompanyAndCategories(companyId, categoriesId);
+		
+	}
+
 }

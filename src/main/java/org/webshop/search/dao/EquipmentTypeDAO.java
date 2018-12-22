@@ -10,5 +10,6 @@ public interface EquipmentTypeDAO {
 	List <ProductName> getListOfType();
 	
 	List <CategoriesModel> getCategoriesByCompanyId(long companyId);
+	 
 
 }

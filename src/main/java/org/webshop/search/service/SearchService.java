@@ -23,4 +23,6 @@ public interface SearchService {
 	
 	List<CategoriesModel> getAllCategoriesByCompanyId(long companyId);
 	
+	List<CollectionOfModel> getAllPruductByCompanyAndCategories(long companyId,long categoriesId);
+	
 }
