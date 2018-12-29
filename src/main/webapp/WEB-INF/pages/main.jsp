@@ -92,7 +92,6 @@ border: 1px solid black;
 								<select ng-model="selectedCategories" ng-change="changeValueCategories(selectedCategories)" size="5">
 						       		<option data-ng-repeat="categoriesList in categories" value="{{categoriesList.categoriesId}}">{{categoriesList.categoriesName}}</option>
 						        </select>
-								{{selectedCategories}}
 							</td>
 						</tr>
 					</tbody>

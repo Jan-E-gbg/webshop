@@ -1,5 +1,16 @@
 'use strict';
 
+myApp.controller('CostomerController',['$scope',function($scope){
+	
+}]).directive('itemWidget', [function() {
+    return{
+    	restrict: 'E',
+    	scope: {
+    		imge: '=itemInfo'
+        },
+        template = "<td><img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/></td>",
+    }
+}]);
 myApp.controller('UserController', ['$scope', 'Authentication', function($scope, Authentication) {
 	
 	function fetchCurrentUser(){
