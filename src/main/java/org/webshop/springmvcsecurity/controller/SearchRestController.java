@@ -32,6 +32,7 @@ import org.webshop.search.model.CompanyImgAndDoc;
 import org.webshop.search.model.ProductModel;
 import org.webshop.search.model.ProductName;
 import org.webshop.search.model.ScreenSize;
+import org.webshop.search.model.SearchItem;
 import org.webshop.search.service.SearchService;
 import org.webshop.springmvcsecurity.authentication.facade.AuthenticationFacade;
 import org.webshop.springmvcsecurity.model.LoginUser;
@@ -67,6 +68,16 @@ public class SearchRestController extends BaseController{
 		//System.out.println("currentUser " + currentUser.get(0).getUser());
 		
 		return new ResponseEntity<List<LoginUser>>(currentUser,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/listAllSearchItem" , method = RequestMethod.GET)
+	public ResponseEntity <List<SearchItem>> getAllSearchItems(){
+		
+		List<SearchItem> currentItems = sourceService.getAllSearchItems(1);
+		
+		System.out.println("currentItems " + currentItems.size());
+		
+		return new ResponseEntity<List<SearchItem>>(currentItems,HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/listAllCompanys" , method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE )

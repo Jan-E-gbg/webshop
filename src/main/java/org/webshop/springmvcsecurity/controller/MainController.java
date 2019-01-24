@@ -95,6 +95,18 @@ public class MainController extends BaseController {
 	   
        return "main";
    }
+   
+   @RequestMapping(value = {"/restcostomer" }, method = RequestMethod.GET)
+   public String costomerPage(Model model, HttpServletRequest request )throws IOException { 
+	   
+	   String rootPath = request.getSession().getServletContext().getRealPath("static");
+	   
+	   System.out.println(" path " + rootPath);
+	   
+       return "costomerPage";
+   }
+   
+   
  
    @RequestMapping(value = "/admin", method = RequestMethod.GET)
    public String adminPage(Model model) {

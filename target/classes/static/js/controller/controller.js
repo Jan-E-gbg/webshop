@@ -1,15 +1,182 @@
 'use strict';
 
-myApp.controller('CostomerController',['$scope',function($scope){
+myApp.controller('CostomerController',['$scope','Search','$window',function($scope, Search, $window){
 	
-}]).directive('itemWidget', [function() {
-    return{
-    	restrict: 'E',
-    	scope: {
-    		imge: '=itemInfo'
-        },
-        template = "<td><img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/></td>",
-    }
+	
+	
+	function fetchCurrentSearchItems(){
+			
+			Search.query(function(result, responseHeaders){
+				
+				$scope.items = result;
+				
+				//preLoad(result);
+				//result.length
+				ArraySize(result.length,3)
+				
+			},function(httpResponse){
+	  		    //console.log('Error while fetching users list');
+	  		    alert("Error while fetching currentUser") 
+	   	 });
+			
+			
+ 			//alert(" fet " + items.length );
+		
+	}
+		
+		fetchCurrentSearchItems();
+		
+		
+		function buildTable(data){
+		
+		var table = document.createElement("table");
+		
+		table.className="gridtable";
+		
+		//alert("load " + data.length)
+		
+		var index = 0;
+		var countTr = 0;
+		var countTd = 0;
+		var index = 0;
+		var indexTr = 0;
+		var size = data.length;
+		var next = true;
+		
+			while(next){
+			
+			if(countTr == 0){
+				
+				countTr += 3;
+				console.log(" add tr " + countTr )
+				var tr = document.createElement("tr");
+			}else if(indexTr < 3){
+				var td = document.createElement("td");
+				td.appendChild(document.createTextNode(data[index].jspFullPathAndImgName));
+		        tr.appendChild(td);
+				indexTr++;
+				index++;
+				console.log(" add td " + indexTr );
+			}
+			
+			if(indexTr == 3){
+				table.appendChild(tr); 
+				countTr = 0;
+				indexTr = 0;
+				console.log(" 3 tr appendChild ");
+			}
+			console.log(" index " + index);
+			console.log(" size " + size);
+			
+			if(index == size-1){
+				
+				next = false;
+				console.log(" next " + size);
+			}
+			
+			
+			
+		}
+		
+			return table;
+			
+		}
+		
+		function ArraySize(size,tdSize){
+			"use strict"	
+			console.log(" start >  " + size);
+			var index = 0;
+			
+			var arrayValues=[];
+			
+			var next = true;
+			
+			var arraySize = 0;
+			
+			if((size != 0) || (size != "undefined")){
+				
+					arraySize = 0;
+					
+					while(next){
+						
+						if(size > tdSize){
+							
+							arraySize++;
+							size -=tdSize;
+							arrayValues[index]=tdSize;
+							index++;
+							console.log(" size >  " + size);		
+						}
+						else if(size <= tdSize){
+							
+							arraySize++;
+							next = false;	
+							arrayValues[index]=size;
+							console.log(" next " + size);	
+						}
+						
+					}
+			}
+			console.log(" arraySize " + arrayValues);
+			console.log(" arraySize " + arrayValues.length);
+			
+			var nextItem = true;
+			var valuesIndex = 0;
+			var indexItem = 0;
+			var itemsSize = $scope.items.length;
+			
+			var MultiItems = new Array(arrayValues.length);
+			
+				for(var indexValue = 0; indexValue < arrayValues.length;indexValue++){
+					
+					console.log(" MultiItems[indexValue] " + indexValue);
+					MultiItems[indexValue]= new Array(arrayValues[indexValue]);
+					var countTd = arrayValues[indexValue];
+					var dimensionTwoIndex = 0;
+					nextItem = true;
+					
+					while(nextItem){
+						
+						if(dimensionTwoIndex < countTd){
+							console.log(" MultiItems[indexValue][dim] " + dimensionTwoIndex);
+							MultiItems[indexValue][dimensionTwoIndex]=$scope.items[indexItem];
+							indexItem++;
+							dimensionTwoIndex++;
+							
+						}else if(dimensionTwoIndex <= countTd){
+							nextItem = false;
+							console.log(" nextItem ");	
+						}
+						
+						
+					}
+						
+			}
+				console.log(MultiItems);
+				console.log(MultiItems[0][0].imgName);
+				console.log(MultiItems[0].length);
+				
+				
+				//for(var i = 0; i < MultiItems.length;i++){
+				//	for(var x = 0; x < MultiItems[i].length;x++){
+						
+				//		console.log(MultiItems[i][x].imgName);
+						
+				//	}
+					
+				$scope.images = MultiItems;			
+		}
+	
+		function preLoad(data) {
+		
+		  document.getElementById("content").appendChild(buildTable(data));
+		}
+		
+		$scope.getImgInfo = function(image){
+			
+			console.log(" image " + image);
+		}
+	
 }]);
 myApp.controller('UserController', ['$scope', 'Authentication', function($scope, Authentication) {
 	

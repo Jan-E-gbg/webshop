@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
+  <script>document.write("<base href=\"" + document.location + "\" />");</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+<script type="text/javascript">
+var app = angular.module('app', [])
+ 
+ app.controller('MainCtrl', function($scope) {
+  $scope.items = [{
+    id: 1,
+    name: "BMW",
+    country: "Germany"
+  }, {
+    id: 2,
+    name: "Honda",
+    country: "Japan"
+  }, {
+    id: 3,
+    name: "Samsung",
+    country: "Korea"
+  },];
+}).directive('item', function($compile) {
+	  function createTDElement(directive) {
+	    var table = angular.element('<table><tr><td ' + directive + '></td></tr></table>');
+	    return table.find('td');
+	  }
+	  
+	  return {
+		    restrict: 'A',
+		    scope: {
+		      item: "=",
+		      index: "="
+		    }
+	  }
+});
+ app.directive("secondcolumn", function() {
+	  return {
+	    restrict: 'A',
+	    template: '{{item.name}}'
+	  }
+  
+	});
+  
+</script>
+</head>
+<body ng-controller="MainCtrl">
+<h1>Dynamic columns in a angularJS datatable</h1>
+  <table border="1">
+    <tr ng-repeat="item in items" track by $index item="item" index="$index">
+  </table>
+
+</body>
+</html>

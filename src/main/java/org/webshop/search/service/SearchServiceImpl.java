@@ -10,12 +10,14 @@ import org.webshop.search.dao.CollectionOfModelDAO;
 import org.webshop.search.dao.CompanyDAO;
 import org.webshop.search.dao.DisplayScreenSizeDAO;
 import org.webshop.search.dao.EquipmentTypeDAO;
+import org.webshop.search.dao.SearchItemDAO;
 import org.webshop.search.hibernate.dao.CategoriesModelDAO;
 import org.webshop.search.model.CategoriesModel;
 import org.webshop.search.model.CollectionOfModel;
 import org.webshop.search.model.Company;
 import org.webshop.search.model.ProductName;
 import org.webshop.search.model.ScreenSize;
+import org.webshop.search.model.SearchItem;
 @Service("searchService")
 @org.springframework.transaction.annotation.Transactional
 public class SearchServiceImpl implements SearchService {
@@ -35,6 +37,10 @@ public class SearchServiceImpl implements SearchService {
 	@Autowired
 	@Qualifier(value="QualiEquipmentTypeDAO")
 	private EquipmentTypeDAO equipmentTypeDAO;
+	
+	@Autowired
+	@Qualifier(value="QualiSearchItemDAO")
+	private SearchItemDAO searchItemDAO;
 	
 	@Autowired
 	private CompanyImgDocService companyImgDocService;
@@ -91,6 +97,11 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 		return collectionOfModelDAO.getAllPruductByCompanyAndCategories(companyId, categoriesId);
 		
+	}
+
+	public List<SearchItem> getAllSearchItems(int viseble) {
+		// TODO Auto-generated method stub
+		return searchItemDAO.getAllItem(viseble);
 	}
 
 }

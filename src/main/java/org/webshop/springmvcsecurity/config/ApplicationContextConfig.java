@@ -26,10 +26,12 @@ import org.webshop.search.dao.CollectionOfModelDAO;
 import org.webshop.search.dao.CollectionSearchDAO;
 import org.webshop.search.dao.DisplayScreenSizeDAO;
 import org.webshop.search.dao.EquipmentTypeDAO;
+import org.webshop.search.dao.SearchItemDAO;
 import org.webshop.search.dao.impl.CollectionOfModelDAOImpl;
 import org.webshop.search.dao.impl.CollectionSearchImpl;
 import org.webshop.search.dao.impl.DisplayScreenSizeDAOImpl;
 import org.webshop.search.dao.impl.EquipmentTypeDAOImpl;
+import org.webshop.search.dao.impl.SearchItemDAOImpl;
 import org.webshop.search.workspace.dao.ItemDAO;
 import org.webshop.search.workspace.dao.impl.ItemDAOImpl;
 import org.webshop.springmvcmultids.routing.RoutingDataSource;
@@ -199,6 +201,12 @@ public class ApplicationContextConfig {
 	  public EquipmentTypeDAO QualiEquipmentTypeDAO ()throws SQLException {
 		  
 		  return new EquipmentTypeDAOImpl(getDataSource2());
+	  }
+	  
+	  @Bean 
+	  public SearchItemDAO QualiSearchItemDAO ()throws SQLException {
+		  
+		  return new SearchItemDAOImpl(getDataSource2());
 	  }
 	  
 	  @Bean
