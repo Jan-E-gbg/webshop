@@ -40,19 +40,24 @@ table.gridtable td {
 		<div ng-controller="CostomerController"  >	
 		
 			<div id="content">
-				{{images.length}}
-				<table border="1">
-					<tbody >
-						<tr data-ng-repeat="image in images" ng-model="image" track by $index>
-							
-							<td data-ng-repeat="img in image" ng-model="imgs" track by $index>
-							<img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/>
-							</td>
-						</tr>
-					
-					</tbody>
+				{{images.lengt}}
 				
+				<table boder=1 >
+				
+				<tbody data-ng-repeat="image in images" ng-model="image" $index >
+				
+					<tr>
+					
+					<td data-ng-repeat="img in image" ng-model="img">
+						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>
+					</td>	
+				</tr>
+				
+				</tbody>
 				</table>
+				
+				
+				
 			
 			</div>
 		
