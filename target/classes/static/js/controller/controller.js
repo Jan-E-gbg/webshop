@@ -12,7 +12,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 				
 				//preLoad(result);
 				//result.length
-				ArraySize(result.length,3)
+				buildTwodimensionalArray(result.length,3)
 				
 			},function(httpResponse){
 	  		    //console.log('Error while fetching users list');
@@ -82,7 +82,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 			
 		}
 		
-		function ArraySize(size,tdSize){
+		function buildTwodimensionalArray(size,tdSize){
 			"use strict"	
 			console.log(" start >  " + size);
 			var index = 0;
@@ -174,7 +174,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 		
 		$scope.getImgInfo = function(image){
 			
-			console.log(" image " + image);
+			console.log(" image " + image.productId);
 		}
 	
 }]);

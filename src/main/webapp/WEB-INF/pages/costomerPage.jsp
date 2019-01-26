@@ -48,8 +48,8 @@ table.gridtable td {
 				
 					<tr>
 					
-					<td data-ng-repeat="img in image" ng-model="img">
-						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>
+					<td data-ng-repeat="img in image" ng-model="img" $index>
+						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>{{$parent.$index}}
 					</td>	
 				</tr>
 				
