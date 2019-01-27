@@ -20,7 +20,6 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 	   	 });
 			
 			
- 			//alert(" fet " + items.length );
 		
 	}
 		
@@ -105,20 +104,20 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 							size -=tdSize;
 							arrayValues[index]=tdSize;
 							index++;
-							console.log(" size >  " + size);		
+							//console.log(" size >  " + size);		
 						}
 						else if(size <= tdSize){
 							
 							arraySize++;
 							next = false;	
 							arrayValues[index]=size;
-							console.log(" next " + size);	
+							//console.log(" next " + size);	
 						}
 						
 					}
 			}
-			console.log(" arraySize " + arrayValues);
-			console.log(" arraySize " + arrayValues.length);
+			//console.log(" arraySize " + arrayValues);
+			//console.log(" arraySize " + arrayValues.length);
 			
 			var nextItem = true;
 			var valuesIndex = 0;
@@ -145,6 +144,11 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 							
 						}else if(dimensionTwoIndex <= countTd){
 							nextItem = false;
+							
+							if(indexItem == itemsSize){
+							$scope.colSpane = countTd - dimensionTwoIndex -1;
+							console.log(" nextItem colspane " + $scope.colSpane );
+							}
 							console.log(" nextItem ");	
 						}
 						
@@ -153,8 +157,8 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 						
 			}
 				console.log(MultiItems);
-				console.log(MultiItems[0][0].imgName);
-				console.log(MultiItems[0].length);
+				//console.log(MultiItems[0][0].imgName);
+				//console.log(MultiItems[0].length);
 				
 				
 				//for(var i = 0; i < MultiItems.length;i++){
