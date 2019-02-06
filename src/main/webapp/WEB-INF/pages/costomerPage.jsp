@@ -42,15 +42,18 @@ table.gridtable td {
 			<div id="content">
 				{{images.lengt}}
 				
-				<table boder=1 >
+				<table id="theTable" border=1 >
 				
 				<tbody data-ng-repeat="image in images" ng-model="image" $index >
 				
 					<tr>
 					
-					<td data-ng-repeat="img in image" ng-model="img" $index>
-						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>{{$parent.$index}}
+					<td  data-ng-repeat="img in image" item-image ng-model="img" colspan='{{img.colSpan}}' $index>
+						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>{{$parent.$index}}{{$index}}
+					
+	
 					</td>	
+					
 				</tr>
 				
 				</tbody>

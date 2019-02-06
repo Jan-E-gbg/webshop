@@ -153,9 +153,8 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 									
 									$scope.colSpane = tdSize;
 									$scope.arrayIndex = indexValue;
-									MultiItems[indexValue][dimensionTwoIndex].colSpan = tdSize - dimensionTwoIndex;
 									console.log(" nextItem colspane " + $scope.colSpane );
-									console.log(" nextItem colspane " + MultiItems[indexValue][dimensionTwoIndex].colSpan );
+									console.log(" nextItem colspane " + tdSize + " " + countTd + " " + indexValue );
 									
 								}
 							

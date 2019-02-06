@@ -55,6 +55,7 @@ public class SearchItemDAOImpl extends JdbcDaoSupport implements SearchItemDAO {
 						 item.setImgName(rs.getString("name"));
 						 item.setJspPath(rs.getString("jsp_path"));
 						 item.setProductId(rs.getInt("product_id"));
+						 item.setColSpan(0);
 						items.add(item);
 						
 					}

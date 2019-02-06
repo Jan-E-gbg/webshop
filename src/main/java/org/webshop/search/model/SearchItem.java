@@ -6,6 +6,7 @@ public class SearchItem {
 	private String imgName;
 	private int productId;
 	private String jspFullPathAndImgName;
+	private int colSpan = 0;
 	
 	
 	public String getJspFullPathAndImgName() {
@@ -39,6 +40,14 @@ public class SearchItem {
 	
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+
+	public int getColSpan() {
+		return colSpan;
+	}
+
+	public void setColSpan(int colSpan) {
+		this.colSpan = colSpan;
 	}
 	
 	
