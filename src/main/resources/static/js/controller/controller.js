@@ -192,62 +192,26 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 			console.log(" image " + image.productId);
 		}
 	
-}]).directive('itemImage',function($timeout,$compile,$scope) {
-    	return{
-            restrict: 'E',
-            controller: function ($scope, $element) {
-            	var scope = $scope.$new();
-                console.log(': controller');
-                console.log($element.html());
-            },
-            scope: {
-                item: '=itemInfo',
-                
-                scope: '='
-            },
-            compile: function compile(elem) {
-            	
-            	elem.ready(function() { 
-                 
-            		$timeout(function () {
-                        //do something with the element
-            			
-            			
-            			console.log(elem.html())
-            			var tableid = document.getElementById("theTable");
+}]).directive('imageResizing', [function () {
+    return {
+        restrict: 'A',
+        scope: {
+            imageHeight: '@',
+            imageWidth: '@',
+        },
+        link: function (scope, element, attrs) {
             
-            			var firstRow = tableid.rows[0].cells.length;
-            			//console.log(" index " +index);
-            			//console.log(" row " + tableid.rows[index].cells.length);  
-            			var lastRow = tableid.rows[tableid.rows.length-1].cells.length;
-            			
-            			if(lastRow < firstRow){
-            				
-            				var spaneValue  = firstRow - lastRow;
-            				tableid.rows[tableid.rows.length-1].cells[lastRow-1].setAttribute("colspan", spaneValue);
-            				elem.append(tableid);
-            				$compile(elem)(scope);
-            				//elem.html(tableid.innerHTML);
-            				console.log(" les " +tableid.rows[tableid.rows.length-1].cells[lastRow-1].getAttribute("colspan"));
-            			}	
-            				  	
-            		},1000);
-            	});
-            	
-            	return {
-                    pre: function (scope, elem, iAttrs) {
-                        console.log(': pre link');
-                        console.log(elem.html());
-                    },
-                    post: function (scope, elem, iAttrs) {
-                        console.log(': post link');
-                        console.log(elem.html());
-                    }
-                }
-            	
-        	}
-    	}		
-});
+                var imageElement = element[0];
+                console.log("Image Height:" + imageElement.height);
+                console.log("Image Width:" + imageElement.width);
+                var imageSizeCSSClass = {};
+                imageSizeCSSClass["max-width"] = scope.imageWidth;
+                imageSizeCSSClass["max-height"] = scope.imageHeight;
+                $(imageElement).css(imageSizeCSSClass);
+           
+        }
+    };
+}]);
 myApp.controller('UserController', ['$scope', 'Authentication', function($scope, Authentication) {
 	
 	function fetchCurrentUser(){

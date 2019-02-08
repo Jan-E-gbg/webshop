@@ -49,8 +49,8 @@ table.gridtable td {
 					<tr>
 					
 					<td  data-ng-repeat="img in image" item-image ng-model="img" colspan='{{img.colSpan}}' $index>
-						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"/>{{$parent.$index}}{{$index}}
-					
+						<img ng-src="{{img.jspPath}}\img\{{img.imgName}}" ng-click="getImgInfo(img)"  image-resizing 
+       							image-Height="200px" image-Width="200px" />					
 	
 					</td>	
 					
