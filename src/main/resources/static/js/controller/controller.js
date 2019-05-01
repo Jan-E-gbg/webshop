@@ -1,6 +1,6 @@
 'use strict';
 
-myApp.controller('CostomerController',['$scope','Search','$window',function($scope, Search, $window){
+myApp.controller('CostomerController',['$scope','Search','Model',function($scope, Search, Model){
 	
 	
 	
@@ -12,7 +12,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 				
 				//preLoad(result);
 				//result.length
-				buildTwodimensionalArray(result.length,3)
+				buildTwodimensionalArray(result.length,3,$scope.items);
 				
 			},function(httpResponse){
 	  		    //console.log('Error while fetching users list');
@@ -81,7 +81,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 			
 		}
 		
-		function buildTwodimensionalArray(size,tdSize){
+		function buildTwodimensionalArray(size,tdSize,items){
 			"use strict"	
 			console.log(" start >  " + size);
 			var index = 0;
@@ -122,7 +122,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 			var nextItem = true;
 			var valuesIndex = 0;
 			var indexItem = 0;
-			var itemsSize = $scope.items.length;
+			var itemsSize = items.length;
 			
 			var MultiItems = new Array(arrayValues.length);
 			
@@ -140,7 +140,7 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 						
 						if(dimensionTwoIndex < countTd){
 							console.log(" MultiItems[indexValue][dim] " + dimensionTwoIndex);
-							MultiItems[indexValue][dimensionTwoIndex]=$scope.items[indexItem];
+							MultiItems[indexValue][dimensionTwoIndex]=items[indexItem];
 							indexItem++;
 							dimensionTwoIndex++;
 							
@@ -170,14 +170,6 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 				console.log(MultiItems);
 				//console.log(MultiItems[0][0].imgName);
 				//console.log(MultiItems[0].length);
-				
-				
-				//for(var i = 0; i < MultiItems.length;i++){
-				//	for(var x = 0; x < MultiItems[i].length;x++){
-						
-				//		console.log(MultiItems[i][x].imgName);
-						
-				//	}
 					
 				$scope.images = MultiItems;			
 		}
@@ -189,7 +181,32 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
 		
 		$scope.getImgInfo = function(image){
 			
+			
 			console.log(" image " + image.productId);
+			$scope.theProduct = image;
+			$scope.openPopupInfo();
+		}
+		
+		var span = document.getElementById("myModal").getElementsByClassName("close")[0];
+		$scope.openPopupInfo = function(){
+			
+			document.getElementById("myModal").style.display = "block";
+			//document.getElementById("content").style.zIndex = "1";
+			//document.getElementById("myForm").style.zIndex = "3"; 
+			
+			
+		}
+		
+		span.onclick  = function(){
+			
+			document.getElementById("myModal").style.display = "none";
+		}
+		
+		$scope.closePopupInfo = function(){
+			
+			document.getElementById("myModal").style.display = "none";
+			console.log(" closePopupInfo   ");
+			
 		}
 	
 }]).directive('imageResizing', [function () {
@@ -202,8 +219,6 @@ myApp.controller('CostomerController',['$scope','Search','$window',function($sco
         link: function (scope, element, attrs) {
             
                 var imageElement = element[0];
-                console.log("Image Height:" + imageElement.height);
-                console.log("Image Width:" + imageElement.width);
                 var imageSizeCSSClass = {};
                 imageSizeCSSClass["max-width"] = scope.imageWidth;
                 imageSizeCSSClass["max-height"] = scope.imageHeight;
@@ -343,7 +358,8 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
 			$scope.imgs = product.listOfImages;
 			$scope.HideProduct = true;
 			$scope.copyImage = null;
-			$scope.visibleSelected = $scope.product.isVisible;	
+			$scope.visibleSelected = $scope.product.isVisible;
+			buildTwodimensionalArray($scope.imgs.length,3,$scope.imgs);
 		});
 	}
 	
@@ -480,6 +496,104 @@ myApp.controller('SourcesFormController', ['$http','$scope','Models','Model','Sc
     	//alert(" id " + image.id )
     	});
     }
+    
+    function buildTwodimensionalArray(size,tdSize,items){
+		"use strict"	
+		console.log(" start >  " + size);
+		var index = 0;
+		
+		var arrayValues=[];
+		
+		var next = true;
+		
+		var arraySize = 0;
+		
+		$scope.images = 0;
+		
+		if((size != 0) && (size != "undefined")){
+			
+				arraySize = 0;
+				
+				while(next){
+					
+					if(size > tdSize){
+						
+						arraySize++;
+						size -=tdSize;
+						arrayValues[index]=tdSize;
+						index++;
+						//console.log(" size >  " + size);		
+					}
+					else if(size <= tdSize){
+						
+						arraySize++;
+						next = false;	
+						arrayValues[index]=size;
+						//console.log(" next " + size);	
+					}
+					
+				}
+		
+		//console.log(" arraySize " + arrayValues);
+		//console.log(" arraySize " + arrayValues.length);
+		
+				var nextItem = true;
+				var valuesIndex = 0;
+				var indexItem = 0;
+				var itemsSize = items.length;
+				
+				var MultiItems = new Array(arrayValues.length);
+				
+					for(var indexValue = 0; indexValue < arrayValues.length;indexValue++){
+						
+						console.log(" MultiItems[indexValue] " + indexValue);
+						MultiItems[indexValue]= new Array(arrayValues[indexValue]);
+						var countTd = arrayValues[indexValue];
+						var dimensionTwoIndex = 0;
+						nextItem = true;
+						
+						console.log(" countTd " + countTd);
+						
+						while(nextItem){
+							
+							if(dimensionTwoIndex < countTd){
+								console.log(" MultiItems[indexValue][dim] " + dimensionTwoIndex);
+								MultiItems[indexValue][dimensionTwoIndex]=items[indexItem];
+								indexItem++;
+								dimensionTwoIndex++;
+								
+							}else if(dimensionTwoIndex == countTd){
+								nextItem = false;
+								
+								if(indexItem == itemsSize){
+									dimensionTwoIndex--;
+									if(countTd != tdSize){
+										
+										$scope.colSpane = tdSize;
+										$scope.arrayIndex = indexValue;
+										MultiItems[indexValue][dimensionTwoIndex].colSpan = tdSize - dimensionTwoIndex;
+										console.log(" nextItem colspane " + $scope.colSpane );
+										console.log(" nextItem colspane " + MultiItems[indexValue][dimensionTwoIndex].colSpan );
+										
+									}
+								
+								}
+								console.log(" nextItem ");	
+							}
+							
+							
+						}
+							
+				}
+				console.log(MultiItems);
+				//console.log(MultiItems[0][0].imgName);
+				//console.log(MultiItems[0].length);
+								
+				$scope.images = MultiItems;	
+				
+		}
+		
+	}
     
 
                

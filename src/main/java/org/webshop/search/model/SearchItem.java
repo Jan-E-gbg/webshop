@@ -7,8 +7,19 @@ public class SearchItem {
 	private int productId;
 	private String jspFullPathAndImgName;
 	private int colSpan = 0;
+	private String productName;
 	
 	
+	
+	
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	public String getJspFullPathAndImgName() {
 		return jspFullPathAndImgName = "<script <img ng-src='"+getJspPath()+"'" +"\\img\\"+ getImgName()+"'/>></script>";
 	}

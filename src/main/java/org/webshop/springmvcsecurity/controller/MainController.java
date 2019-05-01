@@ -105,6 +105,12 @@ public class MainController extends BaseController {
 	   
        return "costomerPage";
    }
+   @RequestMapping(value = {"/restpopup" }, method = RequestMethod.GET)
+   public String popupPage(Model model, HttpServletRequest request )throws IOException { 
+	   
+	   
+       return "pupop";
+   }
    
    
  

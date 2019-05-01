@@ -100,6 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/multifilesave/**").access("hasAnyRole('ROLE_SEARCH','ROLE_ADMIN')");
         http.authorizeRequests().antMatchers("/initMultiFile/**").access("hasAnyRole('ROLE_SEARCH','ROLE_ADMIN')");
         http.authorizeRequests().antMatchers("/restmain/**").access("hasAnyRole('ROLE_SEARCH','ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/restcostomer/**").access("hasAnyRole('ROLE_SEARCH','ROLE_ADMIN')");
  
         
         http.authorizeRequests().and().formLogin()

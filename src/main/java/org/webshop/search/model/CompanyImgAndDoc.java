@@ -50,7 +50,19 @@ public class CompanyImgAndDoc {
 	
 	@Column(name="jsp_path", length=255)
 	private String jspPath;
-	 
+	
+	private int colSpan = 0;
+	
+	
+	
+	public int getColSpan() {
+		return colSpan;
+	}
+
+	public void setColSpan(int colSpan) {
+		this.colSpan = colSpan;
+	}
+
 	public String getJspPath() {
 		return jspPath;
 	}

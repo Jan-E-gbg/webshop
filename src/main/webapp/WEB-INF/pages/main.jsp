@@ -46,6 +46,15 @@ border: 1px solid black;
 .right{
  text-align:right; 
 }
+img{
+    width: 200px;
+    height: auto;
+    object-fit: contain; /* Fit logo in the image size */
+        -o-object-fit: contain; /* Fit logo fro opera browser */
+    object-position: top; /* Set logo position */
+        -o-object-position: top; /* Logo position for opera browser */
+    }
+
 </style>
 </head>
 <body ng-app="myApp">
@@ -184,13 +193,17 @@ border: 1px solid black;
                   	<table>
                   		<tr> 
                   			<td>
-	                  			<table>	
-	                				<tbody> 
-	                    				<tr ng-repeat="imge in imgs" ng-model="imgs" track by $index >
-	                    					<td><img ng-src="{{imge.jspPath}}\img\{{imge.name}}" ng-click="getImgInfo(imge)"/></td>
-	                		 			</tr>
-	               					</tbody>				
-	           					</table> 
+	                  			
+	                  		<table id="theTable" border=0 >
+						
+								<tbody data-ng-repeat="image in images" ng-model="image" $index >
+									<tr>
+										<td  data-ng-repeat="img in image" item-image ng-model="img" colspan='{{img.colSpan}}' $index>
+										<img ng-src="{{img.jspPath}}\img\{{img.name}}" class="w3-round" ng-click="getImgInfo(img)" /></td>	
+									</tr>
+								</tbody>
+							</table>
+	                  				
 	           				</td>
 	           				<td>
 	           				<div class="check-element animate-show-hide" ng-show="ShowAndHideImage()">
@@ -255,9 +268,9 @@ border: 1px solid black;
 </div> 
 
 			
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-  			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
+			
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.20/angular.js"></script>
+  			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.20/angular-resource.js"></script>
   			<script type="text/javascript" src="<c:url value='/static/js/app.js' />"></script>
   			<script type="text/javascript"  src="<c:url value='/static/js/controller/controller.js' />"></script>
   			<script type="text/javascript" src="<c:url value='/static/js/service/service.js' />"></script> 
