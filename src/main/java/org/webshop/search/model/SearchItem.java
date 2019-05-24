@@ -8,10 +8,28 @@ public class SearchItem {
 	private String jspFullPathAndImgName;
 	private int colSpan = 0;
 	private String productName;
+	private String productInfo;
+	private String prise;
 	
 	
 	
 	
+	public String getPrise() {
+		return prise;
+	}
+
+	public void setPrise(String prise) {
+		this.prise = prise;
+	}
+
+	public String getProductInfo() {
+		return productInfo;
+	}
+
+	public void setProductInfo(String productInfo) {
+		this.productInfo = productInfo;
+	}
+
 	public String getProductName() {
 		return productName;
 	}

@@ -29,7 +29,7 @@ public class SearchItemDAOImpl extends JdbcDaoSupport implements SearchItemDAO {
 		
  
 		String sql = "select DISTINCT  \r\n" + 
-				" companys_img_doc.jsp_path,companys_img_doc.product_id,companys_img_doc.name, modells.MODELL_NAME " +
+				" companys_img_doc.jsp_path,companys_img_doc.product_id,companys_img_doc.name, modells.MODELL_NAME, modells.MODELL_INFO, modells.MODELL_PRIS " +
 				 " from modells , companys_img_doc where modells.IS_VISEBLE = 1 and companys_img_doc.isVisible = 1 and modells.ID = companys_img_doc.product_id";
 		
 		List<SearchItem> item = this.getJdbcTemplate().query(sql, new ResultSetExtractor<List<SearchItem>>() {
@@ -56,6 +56,8 @@ public class SearchItemDAOImpl extends JdbcDaoSupport implements SearchItemDAO {
 						 item.setJspPath(rs.getString("jsp_path"));
 						 item.setProductId(rs.getInt("product_id"));
 						 item.setProductName(rs.getString("MODELL_NAME"));
+						 item.setProductInfo(rs.getString("MODELL_INFO"));
+						 item.setPrise(rs.getString("MODELL_PRIS"));
 						 item.setColSpan(0);
 						items.add(item);
 						

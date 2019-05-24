@@ -290,15 +290,7 @@ div.ex1 {
 						</tbody>
 						</table>
 					</div>
-					<div class="sidenavright">
-				</div>
 				
-				
-				
-			
-				
-			
-		
 		<div id="myModal" class="modal">
 
 		  <div class="modal-content">
@@ -308,8 +300,21 @@ div.ex1 {
 		      <h2>{{theProduct.productName}}</h2>
 		    </div>
 		    <div class="modal-body">
-		      <p><img ng-src="{{theProduct.jspPath}}\img\{{theProduct.imgName}}" /></p>
-		      <p>Some other text...</p>
+		    <table>
+		    	<tr>
+		    		<td colspan="2">
+		      <img ng-src="{{theProduct.jspPath}}\img\{{theProduct.imgName}}" />
+		      		</td>
+		      	</tr>
+		      	<tr>
+		      		<td>
+		      {{theProduct.productInfo}}
+		      		</td>
+		      		<td>
+		      		Pris: {{theProduct.prise}}
+		      		</td>
+		      	</tr>
+		    </table>
 		    </div>
 		    <div class="modal-footer">
 		    </div>
